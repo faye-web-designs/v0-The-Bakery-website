@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { Checkbox } from '@/components/ui/checkbox'
-import { Field, FieldGroup, FieldLabel, FieldMessage } from '@/components/ui/field'
+import { Field, FieldGroup, FieldLabel, FieldError } from '@/components/ui/field'
 import { Spinner } from '@/components/ui/spinner'
 import { toast } from 'sonner'
 
@@ -109,9 +109,9 @@ export function ContactForm() {
             maxLength={100}
           />
           {errors.name && (
-            <FieldMessage id="name-error" className="text-destructive">
+            <FieldError id="name-error" className="text-destructive">
               {errors.name}
-            </FieldMessage>
+            </FieldError>
           )}
         </Field>
         <Field>
@@ -129,9 +129,9 @@ export function ContactForm() {
             maxLength={254}
           />
           {errors.email && (
-            <FieldMessage id="email-error" className="text-destructive">
+            <FieldError id="email-error" className="text-destructive">
               {errors.email}
-            </FieldMessage>
+            </FieldError>
           )}
         </Field>
         <Field>
@@ -161,9 +161,9 @@ export function ContactForm() {
             maxLength={2000}
           />
           {errors.message && (
-            <FieldMessage id="message-error" className="text-destructive">
+            <FieldError id="message-error" className="text-destructive">
               {errors.message}
-            </FieldMessage>
+            </FieldError>
           )}
           <p className="text-xs text-muted-foreground mt-1">
             {formData.message.length}/2000 characters
@@ -194,9 +194,9 @@ export function ContactForm() {
                 and consent to The Bakery storing my information to respond to my inquiry. *
               </label>
               {errors.consent && (
-                <FieldMessage id="consent-error" className="text-destructive">
+                <FieldError id="consent-error" className="text-destructive">
                   {errors.consent}
-                </FieldMessage>
+                </FieldError>
               )}
             </div>
           </div>
