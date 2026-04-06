@@ -8,6 +8,7 @@ import { FAQ } from '@/components/faq'
 import { ContactSection } from '@/components/contact-section'
 import { Footer } from '@/components/footer'
 import { ChatBot } from '@/components/chat-bot'
+import { ProductGallery } from '@/components/product-gallery'
 import { Toaster } from '@/components/ui/sonner'
 
 export default function Home() {
@@ -17,6 +18,7 @@ export default function Home() {
       <main>
         <Hero />
         <About />
+        <ProductGallery />
         <Services />
         <Testimonials />
         <WhyChooseUs />

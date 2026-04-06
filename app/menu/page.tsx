@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import { Header } from '@/components/header'
 import { Footer } from '@/components/footer'
 import { MenuTabs } from '@/components/menu-tabs'
@@ -13,8 +14,18 @@ export default function MenuPage() {
       <Header />
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="bg-primary/10 py-16 md:py-24">
-          <div className="container mx-auto px-4 text-center">
+        <section className="relative py-24 md:py-32 overflow-hidden">
+          <div className="absolute inset-0">
+            <Image
+              src="/images/menu-hero.jpg"
+              alt="Assorted fresh baked goods"
+              fill
+              className="object-cover"
+              priority
+            />
+            <div className="absolute inset-0 bg-background/85" />
+          </div>
+          <div className="container mx-auto px-4 text-center relative z-10">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-foreground mb-4">
               Our Menu
             </h1>
