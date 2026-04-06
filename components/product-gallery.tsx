@@ -69,17 +69,21 @@ export function ProductGallery() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {products.map((product) => (
-            <div
+            <button
               key={product.id}
-              className="group relative overflow-hidden rounded-xl bg-background shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer"
+              type="button"
+              className="group relative overflow-hidden rounded-xl bg-background shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer text-left w-full focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
               onClick={() => setSelectedImage(product)}
+              aria-label={`View ${product.name} - ${product.description}`}
             >
               <div className="aspect-[4/3] relative overflow-hidden">
                 <Image
                   src={product.image}
                   alt={product.name}
                   fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   className="object-cover transition-transform duration-500 group-hover:scale-110"
+                  loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
@@ -92,7 +96,7 @@ export function ProductGallery() {
                   {product.description}
                 </p>
               </div>
-            </div>
+            </button>
           ))}
         </div>
 
