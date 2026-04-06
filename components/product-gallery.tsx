@@ -3,7 +3,8 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { useState } from 'react'
-import { Dialog, DialogContent } from '@/components/ui/dialog'
+import { Dialog, DialogContent, DialogTitle, DialogDescription } from '@/components/ui/dialog'
+import { VisuallyHidden } from '@radix-ui/react-visually-hidden'
 import { Button } from '@/components/ui/button'
 
 const products = [
@@ -103,27 +104,33 @@ export function ProductGallery() {
       </div>
 
       <Dialog open={!!selectedImage} onOpenChange={() => setSelectedImage(null)}>
-        <DialogContent className="max-w-3xl p-0 overflow-hidden">
+        <DialogContent className="max-w-3xl p-0 overflow-hidden" aria-describedby={undefined}>
           {selectedImage && (
-            <div>
-              <div className="relative aspect-[4/3]">
-                <Image
-                  src={selectedImage.image}
-                  alt={selectedImage.name}
-                  fill
-                  className="object-cover"
-                />
+            <>
+              <VisuallyHidden>
+                <DialogTitle>{selectedImage.name}</DialogTitle>
+                <DialogDescription>{selectedImage.description}</DialogDescription>
+              </VisuallyHidden>
+              <div>
+                <div className="relative aspect-[4/3]">
+                  <Image
+                    src={selectedImage.image}
+                    alt={selectedImage.name}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <div className="p-6">
+                  <span className="inline-block px-3 py-1 text-sm font-medium bg-primary/10 text-primary rounded-full mb-3">
+                    {selectedImage.category}
+                  </span>
+                  <h3 className="text-2xl font-serif font-bold text-foreground mb-2">
+                    {selectedImage.name}
+                  </h3>
+                  <p className="text-muted-foreground">{selectedImage.description}</p>
+                </div>
               </div>
-              <div className="p-6">
-                <span className="inline-block px-3 py-1 text-sm font-medium bg-primary/10 text-primary rounded-full mb-3">
-                  {selectedImage.category}
-                </span>
-                <h3 className="text-2xl font-serif font-bold text-foreground mb-2">
-                  {selectedImage.name}
-                </h3>
-                <p className="text-muted-foreground">{selectedImage.description}</p>
-              </div>
-            </div>
+            </>
           )}
         </DialogContent>
       </Dialog>
