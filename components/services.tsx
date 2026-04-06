@@ -1,5 +1,7 @@
+import Link from 'next/link'
 import { Croissant, Pizza, IceCream, Gift } from 'lucide-react'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { Button } from '@/components/ui/button'
 
 const services = [
   {
@@ -38,6 +40,9 @@ export function Services() {
           <p className="text-lg text-muted-foreground">
             From fresh-baked morning treats to savory pizza nights, we&apos;ve got you covered.
           </p>
+          <Button asChild className="mt-6">
+            <Link href="/menu">View Full Menu</Link>
+          </Button>
         </div>
 
         <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
